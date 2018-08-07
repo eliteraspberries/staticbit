@@ -39,11 +39,10 @@ def readbytes(f):
 
 def xcor(x, y):
     x = numpy.copy(x)
-    y = numpy.copy(y)
+    y = numpy.copy(y[::-1])
     n = x.size + y.size
     x.resize(n)
     y.resize(n)
-    y = y[::-1]
     X = numpy.fft.rfft(x)
     Y = numpy.fft.rfft(y)
     Z = X * Y
@@ -131,7 +130,7 @@ if __name__ == '__main__':
             codes = chip.codes(2 ** 8)
             xc = xcor(codes, data)
             i = numpy.argmax(xc ** 2)
-            byte = i / chip.size + 1
+            byte = i / chip.size
             if sys.stdout.isatty():
                 byte &= 127
             sys.stdout.write(chr(byte))

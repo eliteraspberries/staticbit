@@ -49,11 +49,10 @@ def tobyte(bits):
 
 def xcor(x, y):
     x = numpy.copy(x)
-    y = numpy.copy(y)
+    y = numpy.copy(y[::-1])
     n = x.size + y.size
     x.resize(n)
     y.resize(n)
-    y = y[::-1]
     X = numpy.fft.rfft(x)
     Y = numpy.fft.rfft(y)
     Z = X * Y
