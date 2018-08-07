@@ -6,6 +6,7 @@ Staticbit is a script to encode a bitstream as static noise.
 The staticbyte script is similar to staticbit but encodes bytes not bits.
 Its output is smaller but decoding takes much longer.
 
+
 ## Puzzles
 
 ### Puzzle 1
@@ -21,14 +22,21 @@ Download the files from the release named [Puzzle 1][].
 
 Determine which file is which and prove it.
 
-[Puzzle 1]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle1
-
 ### Puzzle 2
 
 There is a message in the file puzzle2.wav. What does it say?
 
 Download the file from the release named [Puzzle 2][].
 
-[Puzzle 2]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle2
-
 Hint: The noise is the message and the message is the noise.
+
+### Puzzle 3
+
+Like Puzzle 2 but using staticbyte instead of staticbit.
+
+Download the file from the release named [Puzzle 3][].
+
+
+[Puzzle 1]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle1
+[Puzzle 2]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle2
+[Puzzle 3]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle3
