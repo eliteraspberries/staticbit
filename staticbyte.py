@@ -1,10 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python -u
 
 """staticbyte.py - encode a stream of bytes as static noise
 
 Usage:
-    python staticbyte.py (-e | -d) <FILE>
-    python staticbyte.py -h
+    python -u staticbyte.py (-e | -d) <FILE>
+    python -u staticbyte.py -h
 """
 
 
