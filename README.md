@@ -1,7 +1,28 @@
-Staticbit is a script to encode a bitstream as static noise.
+Staticbit is a collection of scripts to encode data as static noise.
+
+
+## Requirements
+
+The staticbit scripts require Python and [NumPy][].
+
+To install these on a Debian GNU/Linux system:
+
+    $ sudo apt-get install python python-numpy
+
+
+## staticbit.py
+
+Encode a file as static noise:
 
     $ python staticbit.py -e foo.wav < staticbit.py
+
+The script prompts for a key (a 32-bit number), reads from standard input,
+and outputs a WAVE file.  Decode it:
+
     $ python staticbit.py -d foo.wav
+
+
+## staticbyte.py
 
 The staticbyte script is similar to staticbit but encodes bytes not bits.
 Its output is smaller but decoding takes much longer.
@@ -37,6 +58,8 @@ Like Puzzle 2 but using staticbyte instead of staticbit.
 Download the file from the release named [Puzzle 3][].
 
 
+[Python]: <https://www.python.org/>
+[NumPy]: <http://www.numpy.org/>
 [Puzzle 1]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle1
 [Puzzle 2]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle2
 [Puzzle 3]: https://github.com/eliteraspberries/staticbit/releases/tag/puzzle3
