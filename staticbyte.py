@@ -3,8 +3,12 @@
 """staticbyte.py - encode a stream of bytes as static noise
 
 Usage:
-    python -u staticbyte.py (-e | -d) <FILE>
+    python -u staticbyte.py (-e | -d) <FILE> [-s <N>]
     python -u staticbyte.py -h
+
+Options:
+    -s  Set the chip size (default: 4096)
+    -h  Print this help
 """
 
 
@@ -53,9 +57,8 @@ def xcor(x, y):
 
 class Chip(object):
 
-    size = 2 ** 12
-
-    def __init__(self, seed=None):
+    def __init__(self, size, seed=None):
+        self.size = size
         numpy.random.seed(seed)
 
     def codes(self, n):
@@ -64,20 +67,19 @@ class Chip(object):
 
 if __name__ == '__main__':
 
-    encode = False
-    filename = None
-    options = ['-e', '-d', '-h']
     if len(sys.argv) == 2 and sys.argv[1] == '-h':
         print(__doc__)
         sys.exit(0)
-    elif len(sys.argv) == 2 and not sys.argv[1] in options:
-        encode = False
-        filename = sys.argv[1]
-    elif len(sys.argv) == 3 and sys.argv[1] in options:
-        if sys.argv[1] == '-e':
-            encode = True
-        filename = sys.argv[2]
-    else:
+    try:
+        encode = '-e' in sys.argv
+        i = sys.argv.index('-e' if encode else '-d')
+        filename = sys.argv[i + 1]
+        if '-s' in sys.argv:
+            i = sys.argv.index('-s')
+            size = int(sys.argv[i + 1])
+        else:
+            size = 2 ** 12
+    except:
         print(__doc__)
         sys.exit(os.EX_USAGE)
 
@@ -90,7 +92,7 @@ if __name__ == '__main__':
     key = line.rstrip('\n')
     key = int(key)
 
-    chip = Chip(seed=key)
+    chip = Chip(size, seed=key)
 
     FS = 44100
     SAMPWIDTH = 2
