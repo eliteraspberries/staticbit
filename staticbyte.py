@@ -55,6 +55,12 @@ def xcor(x, y):
     return z
 
 
+def modxcor(x, y):
+    z = xcor(x, y)
+    n = y.size
+    return z[(n // 2):-(n // 2)]
+
+
 class Chip(object):
 
     def __init__(self, size, seed=None):
@@ -130,7 +136,7 @@ if __name__ == '__main__':
             data = numpy.float32(pcm)
             data = data / (PCM_MAX + 1.0)
             codes = chip.codes(2 ** 8)
-            xc = xcor(codes, data)
+            xc = modxcor(codes, data)
             i = numpy.argmax(xc ** 2)
             byte = i / chip.size
             if sys.stdout.isatty():
