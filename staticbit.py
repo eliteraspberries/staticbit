@@ -149,8 +149,7 @@ if __name__ == '__main__':
             pcm = numpy.fromstring(frames, dtype=PCM_DTYPE)
             data = numpy.float32(pcm)
             data = data / (PCM_MAX + 1.0)
-            code = chip.code()
-            one = PCM_DTYPE(code * PCM_MAX)
+            one = chip.code()
             xc = modxcor(data, one)
             i = numpy.argmax(xc ** 2)
             if xc[i] > 0:
