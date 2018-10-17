@@ -51,7 +51,6 @@ def xcor(x, y):
     Y = numpy.fft.rfft(y)
     Z = X * Y
     z = numpy.fft.irfft(Z, n=n)
-    z *= 1.0 / n
     return z
 
 
